@@ -100,7 +100,7 @@ Vue.use(Sku);
 | stepper-title | Quantity title | `String` | `Quantity` |
 | custom-stepper-config | Custom stepper related config | `Object` | `{}` |
 | message-config | Message related config | `Object` | `{}` |
-| get-container | Return the mount node for sku | `() => HTMLElement` | - |
+| get-container | Return the mount node for sku | `String | () => HTMLElement` | - |
 
 ### Event
 
@@ -108,12 +108,16 @@ Vue.use(Sku);
 |-----------|-----------|-----------|
 | add-cart | Triggered when click cart button | data: Object |
 | buy-clicked | Triggered when click buy button | data: Object |
+| stepper-change | Triggered when stepper value changed | value: number |
+
 
 ### Methods
 
-| Method | Description |
-|-----------|-----------|
-| getSkuData() | Get current sku data |
+Use ref to get sku instance and call instance methods
+
+| Name | Attribute | Return value | Description |
+|-----------|-----------|-----------|-------------|
+| getSkuData | - | skuData | Get current skuData |
 
 ### Slot
 

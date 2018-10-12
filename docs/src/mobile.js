@@ -1,22 +1,26 @@
+import '../../packages/vant-css/src/index.css';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './WapApp';
 import routes from './router';
-import '../../packages/vant-css/src/index.css';
-import '../../packages/vant-css/src/icon-local.css';
-import 'vant-doc/src/helper/touch-simulator';
-import './components/nprogress.css';
+import { progress } from 'vant-doc';
+import 'vant-doc/helper/touch-simulator';
 
 const router = new VueRouter({
   mode: 'hash',
-  base: '/zanui/vant/examples',
-  routes: routes(true)
+  routes: routes(true),
+  scrollBehavior(to, from, savedPosition) {
+    return savedPosition || { x: 0, y: 0 };
+  }
+});
+
+router.beforeEach((route, redirect, next) => {
+  progress.start();
+  next();
 });
 
 router.afterEach(() => {
-  if (router.currentRoute.name) {
-    window.scrollTo(0, 0);
-  }
+  progress.done();
   if (!router.currentRoute.redirectedFrom) {
     Vue.nextTick(() => window.syncPath());
   }

@@ -60,12 +60,14 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 |
 |-----------|-----------|-----------|-------------|
 | area-list | 地区列表 | `Object` | - |
-| address-info | 收货人信息 | `Object` | `{}` |
+| address-info | 收货人信息初始值 | `Object` | `{}` |
 | search-result | 详细地址搜索结果 | `Array` | `[]` |
 | show-postal | 是否显示邮政编码 | `Boolean` | `false` |
 | show-delete | 是否显示删除按钮 | `Boolean` | `false` |
 | show-set-default | 是否显示默认地址栏 | `Boolean` | `false` |
 | show-search-result | 是否显示搜索结果 | `Boolean` | `false` |
+| save-button-text | 保存按钮文字 | `String` | `保存` |
+| delete-button-text | 删除按钮文字 | `String` | `删除` |
 | is-saving | 是否显示保存按钮加载动画 | `Boolean` | `false` |
 | is-deleting | 是否显示删除按钮加载动画 | `Boolean` | `false` |
 | tel-validator | 手机号格式校验函数 | `(tel: string) => boolean` | - |
@@ -88,10 +90,12 @@ export default {
 |-----------|-----------|
 | - | 在邮政编码下方插入内容 |
 
-
 ### 数据格式
 
 #### addressInfo 数据格式
+
+注意：addressInfo 仅作为初始值传入，表单最终内容可以在 save 事件中获取
+
 | key | 说明 | 类型 |
 |-----------|-----------|-----------|
 | id | 每条地址的唯一标识 | `String | Number` |
@@ -100,12 +104,13 @@ export default {
 | province | 省份 | `String` |
 | city | 城市 | `String` |
 | county | 区县 | `String` |
-| address_detail | 详细地址 | `String` |
-| area_code | 地区编码，通过省市区选择获取 | `String` |
-| postal_code | 邮政编码 | `String` |
-| is_default | 是否为默认地址 | `Boolean` |
+| addressDetail | 详细地址 | `String` |
+| areaCode | 地区编码，通过省市区选择获取 | `String` |
+| postalCode | 邮政编码 | `String` |
+| isDefault | 是否为默认地址 | `Boolean` |
 
 #### searchResult 数据格式
+
 | key | 说明 | 类型 |
 |-----------|-----------|-----------|
 | name | 地名 | `String` |
@@ -113,3 +118,24 @@ export default {
 
 #### 省市县列表数据格式
 请参考 [Area](#/zh-CN/area) 组件。
+
+### 更新日志
+
+| 版本 | 类型 | 内容 |
+|-----------|-----------|-----------|
+| 1.3.2 | improvement | 优化地区展示
+| 1.3.2 | bugfix | 修复详细地址下边框未展示的问题
+| 1.2.1 | improvement | 样式升级
+| 1.2.0 | breaking change | 采用驼峰命名的数据结构
+| 1.2.0 | bugfix | 修复删除按钮展示逻辑
+| 1.1.14 | bugfix | 修复格式化字符串时报错的问题
+| 1.1.11 | improvement | 优化事件触发顺序
+| 1.1.8 | feature | 支持配置按钮文字
+| 1.1.8 | improvement | 简化内部代码结构
+| 1.1.6 | bugfix | 修复省市区弹层样式错误的问题
+| 1.1.5 | improvement | 优化空值校验
+| 1.1.4 | improvement | 适配小屏手机
+| 1.1.3 | feature | 新增 cancel-delete 事件
+| 1.0.2 | bugfix | 修复初始化时省市区未正确选中的问题
+| 1.0.0 | feature | 新增 show-delete 属性
+| 1.0.0 | bugfix | 修复在数据变更时未正确选中省市区的问题

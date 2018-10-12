@@ -14,14 +14,19 @@ module.exports = {
     publicPath: '/',
     chunkFilename: 'async_[name].js'
   },
+  stats: {
+    modules: false,
+    children: false
+  },
   serve: {
     open: true,
     host: '0.0.0.0',
-    dev: {
+    devMiddleware: {
       logLevel: 'warn'
     },
-    hot: {
-      logLevel: 'warn'
+    hotClient: {
+      logLevel: 'warn',
+      allEntries: true
     }
   },
   resolve: {
@@ -59,14 +64,14 @@ module.exports = {
         ]
       },
       {
-        test: /\.md/,
+        test: /\.md$/,
         use: [
           'vue-loader',
           'fast-vue-md-loader'
         ]
       },
       {
-        test: /\.(ttf|svg)(\?.*)?$/,
+        test: /\.(ttf|svg)$/,
         loader: 'url-loader'
       }
     ]
@@ -83,7 +88,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       chunks: ['vant-mobile'],
       template: 'docs/src/index.tpl',
-      filename: 'examples.html',
+      filename: 'mobile.html',
       inject: true
     })
   ]

@@ -56,12 +56,12 @@ $van-tabs-card-height: 30px;
       margin: 0 15px;
       border-radius: 2px;
       box-sizing: border-box;
+      border: 1px solid $red;
       height: $van-tabs-card-height;
-      border: 1px solid $gray-darker;
 
       .van-tab {
-        color: $gray-darker;
-        border-right: 1px solid $gray-darker;
+        color: $red;
+        border-right: 1px solid $red;
         line-height: calc($van-tabs-card-height - 2px);
 
         &:last-child {
@@ -70,7 +70,11 @@ $van-tabs-card-height: 30px;
 
         &.van-tab--active {
           color: $white;
-          background-color: $gray-darker;
+          background-color: $red;
+        }
+
+        &--disabled {
+          color: $gray;
         }
       }
     }
@@ -82,6 +86,7 @@ $van-tabs-card-height: 30px;
     bottom: 15px;
     height: 2px;
     position: absolute;
+    border-radius: 2px 0;
     background-color: $red;
   }
 
@@ -119,19 +124,11 @@ $van-tabs-card-height: 30px;
     display: block;
   }
 
-  &:active {
-    background-color: $active-color;
-  }
-
   &--active {
     color: $red;
   }
 
   &--disabled {
     color: $gray;
-
-    &:active {
-      background-color: $white;
-    }
   }
 }

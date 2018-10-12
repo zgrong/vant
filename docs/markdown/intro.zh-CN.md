@@ -16,23 +16,23 @@
 
 ### 快速上手
 
-请参考 [快速上手](https://www.youzanyun.com/zanui/vant#/zh-CN/quickstart).
+请参考 [快速上手](#/zh-CN/quickstart)
 
 ### 贡献代码
 
-修改代码请阅读我们的 [开发指南](https://github.com/youzan/vant/blob/dev/.github/CONTRIBUTING.zh-CN.md)。
+修改代码请阅读我们的 [开发指南](#/zh-CN/contribution)
 
-使用过程中发现任何问题都可以提 [Issue](https://github.com/youzan/vant/issues) 给我们，当然，我们也非常欢迎你给我们发 [PR](https://github.com/youzan/vant/pulls)。
+使用过程中发现任何问题都可以提 [Issue](https://github.com/youzan/vant/issues) 给我们，当然，我们也非常欢迎你给我们发 [PR](https://github.com/youzan/vant/pulls)
 
 ### 浏览器支持
 
-现代浏览器以及 Android 4.0+, iOS 6+.
+现代浏览器以及 Android 4.0+, iOS 6+
 
 ### 链接
 
 * [意见反馈](https://github.com/youzan/vant/issues)
 * [加入我们](https://job.youzan.com)
-* [更新日志](https://www.youzanyun.com/zanui/vant#/zh-CN/changelog)
+* [更新日志](#/zh-CN/changelog)
 * [React 组件库](https://www.youzanyun.com/zanui/zent)
 * [微信小程序组件库](https://github.com/youzan/zanui-weapp)
 * [vant-demo](https://github.com/youzan/vant-demo)
@@ -40,4 +40,4 @@
 
 ### 开源协议
 
-本项目基于 [MIT](https://zh.wikipedia.org/wiki/MIT%E8%A8%B1%E5%8F%AF%E8%AD%89) 协议，请自由地享受和参与开源。
+本项目基于 [MIT](https://zh.wikipedia.org/wiki/MIT%E8%A8%B1%E5%8F%AF%E8%AD%89) 协议，请自由地享受和参与开源

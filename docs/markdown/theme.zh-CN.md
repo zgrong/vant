@@ -19,9 +19,6 @@ import 'vant/packages/vant-css/src/checkbox.css';
 ```javascript
 module.exports = {
   plugins: [
-    require('postcss-easy-import')({
-      extensions: ['pcss', 'css']
-    }),
     require('postcss-theme-variables')({
       vars: {
         red: '#F60',
@@ -52,4 +49,3 @@ cd packages/vant-css
 ```bash
 npm run build
 ```
-

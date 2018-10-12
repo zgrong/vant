@@ -26,10 +26,13 @@
     &--circle {
       border-radius: 100%;
       border: 3px solid transparent;
+      border-color: $gray;
+      border-top-color: $gray-darker;
     }
 
     &--gradient-circle {
       background-size: contain;
+      background-image: url('https://img.yzcdn.cn/vant/gradient-circle-black.png');
     }
 
     &--spinner {
@@ -64,28 +67,10 @@
     height: 100%;
 
     circle {
+      stroke: currentColor;
       stroke-width: 3;
       stroke-linecap: round;
       animation: van-circular 1.5s ease-in-out infinite;
-    }
-  }
-
-  &--black {
-    .van-loading__spinner--circle {
-      border-color: $gray;
-      border-top-color: $gray-darker;
-    }
-
-    .van-loading__spinner--gradient-circle {
-      background-image: url('https://img.yzcdn.cn/vant/gradient-circle-black.png');
-    }
-
-    .van-loading__spinner--spinner {
-      color: $gray;
-    }
-
-    circle {
-      stroke: $gray;
     }
   }
 
@@ -98,14 +83,6 @@
     .van-loading__spinner--gradient-circle {
       background-image: url('https://img.yzcdn.cn/vant/gradient-circle-white.png');
     }
-
-    .van-loading__spinner--spinner {
-      color: #fff;
-    }
-
-    circle {
-      stroke: $white;
-    }
   }
 }
 
@@ -114,10 +91,12 @@
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
   }
+
   50% {
     stroke-dasharray: 90, 150;
     stroke-dashoffset: -40;
   }
+
   100% {
     stroke-dasharray: 90, 150;
     stroke-dashoffset: -120;

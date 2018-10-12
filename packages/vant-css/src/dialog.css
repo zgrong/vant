@@ -7,29 +7,29 @@
   width: 85%;
   font-size: 16px;
   overflow: hidden;
-  transition: .2s;
+  transition: .3s;
   border-radius: 4px;
   background-color: $white;
   transform: translate3d(-50%, -50%, 0);
-  
-  &__header {
-    padding: 15px 0 0;
-    text-align: center;
-  }
 
-  &__content {
-    &::after {
-      border-bottom-width: 1px;
+  &__header {
+    font-weight: 500;
+    padding-top: 25px;
+    text-align: center;
+
+    &--isolated {
+      padding: 25px 0;
     }
   }
 
   &__message {
+    padding: 25px;
+    font-size: 14px;
     line-height: 1.5;
-    padding: 15px 20px;
 
-    &--withtitle {
-      color: $gray-dark;
-      font-size: 14px;
+    &--has-title {
+      padding-top: 12px;
+      color: $gray-darker;
     }
   }
 
@@ -53,7 +53,7 @@
   &__confirm {
     &,
     &:active {
-      color: #00C000;
+      color: $blue;
     }
   }
 

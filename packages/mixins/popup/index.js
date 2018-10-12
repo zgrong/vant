@@ -21,16 +21,34 @@ export default {
     // z-index
     zIndex: [String, Number],
     // return the mount node for popup
-    getContainer: Function,
+    getContainer: [String, Function],
     // prevent body scroll
     lockScroll: {
+      type: Boolean,
+      default: true
+    },
+    // whether to lazy render
+    lazyRender: {
       type: Boolean,
       default: true
     }
   },
 
+  data() {
+    return {
+      inited: this.value
+    };
+  },
+
+  computed: {
+    shouldRender() {
+      return this.inited || !this.lazyRender;
+    }
+  },
+
   watch: {
     value(val) {
+      this.inited = this.inited || this.value;
       this[val ? 'open' : 'close']();
     },
 
@@ -65,6 +83,10 @@ export default {
 
   beforeDestroy() {
     this.close();
+
+    if (this.getContainer) {
+      this.$parent.$el.appendChild(this.$el);
+    }
   },
 
   deactivated() {
@@ -117,10 +139,20 @@ export default {
     },
 
     move() {
-      if (this.getContainer) {
-        this.getContainer().appendChild(this.$el);
+      let container;
+
+      const { getContainer } = this;
+      if (getContainer) {
+        container =
+          typeof getContainer === 'string'
+            ? document.querySelector(getContainer)
+            : getContainer();
       } else if (this.$parent) {
-        this.$parent.$el.appendChild(this.$el);
+        container = this.$parent.$el;
+      }
+
+      if (container) {
+        container.appendChild(this.$el);
       }
     },
 

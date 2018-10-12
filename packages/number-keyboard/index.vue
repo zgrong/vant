@@ -19,7 +19,7 @@
       </div>
       <div :class="b('body')">
         <key
-          v-for="(key, index) in keys"
+          v-for="key in keys"
           :key="key.text"
           :text="key.text"
           :type="key.type"
@@ -136,6 +136,11 @@ export default create({
 
   methods: {
     handler(action) {
+      /* istanbul ignore if */
+      if (this.$isServer) {
+        return;
+      }
+
       if (action !== this.handlerStatus && this.hideOnClickOutside) {
         this.handlerStatus = action;
         document.body[(action ? 'add' : 'remove') + 'EventListener']('touchstart', this.onBlur);

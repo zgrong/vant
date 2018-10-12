@@ -1,6 +1,12 @@
 <template>
   <div class="app">
-    <van-doc :simulators="simulators" :current-simulator="currentSimulator" :config="config" :base="base">
+    <van-doc
+      :base="base"
+      :config="config"
+      active="Vue 组件"
+      :simulators="simulators"
+      :current-simulator="currentSimulator"
+    >
       <router-view @changeDemoURL="onChangeDemoURL" />
     </van-doc>
   </div>
@@ -11,9 +17,8 @@ import docConfig from './doc.config';
 
 export default {
   data() {
-    const path = location.pathname === '/' ? 'examples.html' : '/zanui/vant/examples';
     return {
-      simulators: [`${path}${location.hash}`],
+      simulators: [`mobile.html${location.hash}`],
       demoURL: ''
     };
   },
@@ -59,7 +64,7 @@ export default {
   }
 
   h2 {
-    font-size: 32px;
+    font-size: 36px;
     line-height: 60px;
     font-weight: normal;
   }

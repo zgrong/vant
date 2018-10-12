@@ -1,5 +1,6 @@
 import Vue from 'vue';
-import VanDialog from './dialog';
+import VanDialog from './Dialog';
+import { isServer } from '../utils';
 
 let instance;
 
@@ -16,6 +17,11 @@ const initInstance = () => {
 };
 
 const Dialog = options => {
+  /* istanbul ignore if */
+  if (isServer) {
+    return Promise.resolve();
+  }
+
   return new Promise((resolve, reject) => {
     if (!instance) {
       initInstance();
@@ -34,6 +40,7 @@ Dialog.defaultOptions = {
   title: '',
   message: '',
   overlay: true,
+  className: '',
   lockScroll: true,
   beforeClose: null,
   confirmButtonText: '',
