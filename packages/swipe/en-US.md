@@ -88,6 +88,38 @@ export default {
 </van-swipe>
 ```
 
+#### Custom Indicator
+
+```html
+<van-swipe @change="onChange">
+  <van-swipe-item>1</van-swipe-item>
+  <van-swipe-item>2</van-swipe-item>
+  <van-swipe-item>3</van-swipe-item>
+  <van-swipe-item>4</van-swipe-item>
+
+  <template slot="indicator">
+    <div class="custom-indicator">
+      {{ this.current + 1 }}/4
+    </div>
+  </template>
+</van-swipe>
+```
+
+```js
+export default {
+  methods: {
+    data() {
+      return {
+        current: 0
+      }
+    },
+    onChange(index) {
+      this.current = index;
+    }
+  }
+}
+```
+
 ### API
 
 | Attribute | Description | Type | Default |
@@ -114,4 +146,11 @@ Use ref to get swipe instance and call instance methods
 
 | Name | Attribute | Return value | Description |
 |-----------|-----------|-----------|-------------|
-| swipeTo | index: 目标位置的索引 | void | 滚动到目标位置 |
+| swipeTo | index: target index | void | Swipe to target index |
+
+### Slot
+
+| name | Description |
+|-----------|-----------|
+| - | Content |
+| indicator | Custom indicator |

@@ -88,6 +88,38 @@ export default {
 </van-swipe>
 ```
 
+#### 自定义指示器
+
+```html
+<van-swipe @change="onChange">
+  <van-swipe-item>1</van-swipe-item>
+  <van-swipe-item>2</van-swipe-item>
+  <van-swipe-item>3</van-swipe-item>
+  <van-swipe-item>4</van-swipe-item>
+
+  <template slot="indicator">
+    <div class="custom-indicator">
+      {{ this.current + 1 }}/4
+    </div>
+  </template>
+</van-swipe>
+```
+
+```js
+export default {
+  methods: {
+    data() {
+      return {
+        current: 0
+      }
+    },
+    onChange(index) {
+      this.current = index;
+    }
+  }
+}
+```
+
 ### API
 
 | 参数 | 说明 | 类型 | 默认值 |
@@ -115,6 +147,13 @@ export default {
 | 方法名 | 参数 | 返回值 | 介绍 |
 |-----------|-----------|-----------|-------------|
 | swipeTo | index: 目标位置的索引 | void | 滚动到目标位置 |
+
+### 插槽
+
+| 名称 | 说明 |
+|-----------|-----------|
+| - | 轮播内容 |
+| indicator | 自定义指示器 |
 
 ### 更新日志
 
