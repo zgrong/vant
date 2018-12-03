@@ -7,6 +7,7 @@ exports[`renders demo correctly 1`] = `
       <div class="van-checkbox__icon van-checkbox__icon--round van-checkbox__icon--checked">
         <i class="van-icon van-icon-success" style="color:undefined;font-size:undefined;">
           <!---->
+          <!---->
         </i>
       </div> <span class="van-checkbox__label">复选框</span></div>
   </div>
@@ -15,14 +16,31 @@ exports[`renders demo correctly 1`] = `
       <div class="van-checkbox__icon van-checkbox__icon--round van-checkbox__icon--disabled">
         <i class="van-icon van-icon-success" style="color:undefined;font-size:undefined;">
           <!---->
+          <!---->
         </i>
-      </div> <span class="van-checkbox__label">复选框</span></div>
+      </div> <span class="van-checkbox__label">
+      复选框
+    </span></div>
     <div class="van-checkbox">
       <div class="van-checkbox__icon van-checkbox__icon--round van-checkbox__icon--disabled van-checkbox__icon--checked">
         <i class="van-icon van-icon-success" style="color:undefined;font-size:undefined;">
           <!---->
+          <!---->
         </i>
-      </div> <span class="van-checkbox__label">复选框</span></div>
+      </div> <span class="van-checkbox__label">
+      复选框
+    </span></div>
+  </div>
+  <div>
+    <div class="van-checkbox">
+      <div class="van-checkbox__icon van-checkbox__icon--round van-checkbox__icon--checked">
+        <i class="van-icon van-icon-success" style="color:undefined;font-size:undefined;border-color:#4b0;background-color:#4b0;">
+          <!---->
+          <!---->
+        </i>
+      </div> <span class="van-checkbox__label">
+      自定义颜色
+    </span></div>
   </div>
   <div>
     <div class="van-checkbox">
@@ -38,6 +56,7 @@ exports[`renders demo correctly 1`] = `
         <div class="van-checkbox__icon van-checkbox__icon--round van-checkbox__icon--checked">
           <i class="van-icon van-icon-success" style="color:undefined;font-size:undefined;">
             <!---->
+            <!---->
           </i>
         </div> <span class="van-checkbox__label">
         复选框 a
@@ -46,6 +65,7 @@ exports[`renders demo correctly 1`] = `
         <div class="van-checkbox__icon van-checkbox__icon--round van-checkbox__icon--checked">
           <i class="van-icon van-icon-success" style="color:undefined;font-size:undefined;">
             <!---->
+            <!---->
           </i>
         </div> <span class="van-checkbox__label">
         复选框 b
@@ -53,6 +73,7 @@ exports[`renders demo correctly 1`] = `
       <div class="van-checkbox">
         <div class="van-checkbox__icon van-checkbox__icon--round">
           <i class="van-icon van-icon-success" style="color:undefined;font-size:undefined;">
+            <!---->
             <!---->
           </i>
         </div> <span class="van-checkbox__label">
@@ -66,6 +87,7 @@ exports[`renders demo correctly 1`] = `
         <div class="van-checkbox__icon van-checkbox__icon--round">
           <i class="van-icon van-icon-success" style="color:undefined;font-size:undefined;">
             <!---->
+            <!---->
           </i>
         </div> <span class="van-checkbox__label">
         复选框 a
@@ -74,6 +96,7 @@ exports[`renders demo correctly 1`] = `
         <div class="van-checkbox__icon van-checkbox__icon--round">
           <i class="van-icon van-icon-success" style="color:undefined;font-size:undefined;">
             <!---->
+            <!---->
           </i>
         </div> <span class="van-checkbox__label">
         复选框 b
@@ -81,6 +104,7 @@ exports[`renders demo correctly 1`] = `
       <div class="van-checkbox">
         <div class="van-checkbox__icon van-checkbox__icon--round">
           <i class="van-icon van-icon-success" style="color:undefined;font-size:undefined;">
+            <!---->
             <!---->
           </i>
         </div> <span class="van-checkbox__label">
@@ -101,6 +125,7 @@ exports[`renders demo correctly 1`] = `
               <div class="van-checkbox__icon van-checkbox__icon--round">
                 <i class="van-icon van-icon-success" style="color:undefined;font-size:undefined;">
                   <!---->
+                  <!---->
                 </i>
               </div>
               <!---->
@@ -118,6 +143,7 @@ exports[`renders demo correctly 1`] = `
               <div class="van-checkbox__icon van-checkbox__icon--round">
                 <i class="van-icon van-icon-success" style="color:undefined;font-size:undefined;">
                   <!---->
+                  <!---->
                 </i>
               </div>
               <!---->
@@ -134,6 +160,7 @@ exports[`renders demo correctly 1`] = `
             <div class="van-checkbox">
               <div class="van-checkbox__icon van-checkbox__icon--round">
                 <i class="van-icon van-icon-success" style="color:undefined;font-size:undefined;">
+                  <!---->
                   <!---->
                 </i>
               </div>

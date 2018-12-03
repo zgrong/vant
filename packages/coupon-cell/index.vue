@@ -1,12 +1,12 @@
 <template>
-  <cell-group :class="b()">
-    <cell
-      :title="title || $t('title')"
-      :value="value"
-      :is-link="editable"
-      @click="$emit('click')"
-    />
-  </cell-group>
+  <cell
+    :class="b()"
+    :title="title || $t('title')"
+    :value="value"
+    :border="border"
+    :is-link="editable"
+    @click="$emit('click')"
+  />
 </template>
 
 <script>
@@ -21,6 +21,10 @@ export default create({
 
   props: {
     title: String,
+    border: {
+      type: Boolean,
+      default: true
+    },
     coupons: {
       type: Array,
       default: () => []
@@ -40,7 +44,8 @@ export default create({
       const { coupons } = this;
       const coupon = coupons[this.chosenCoupon];
       if (coupon) {
-        return `-￥${(coupon.value / 100).toFixed(2)}`;
+        const value = coupon.denominations || coupon.value;
+        return `-￥${(value / 100).toFixed(2)}`;
       }
       return coupons.length === 0 ? this.$t('tips') : this.$t('count', coupons.length);
     }

@@ -1,11 +1,20 @@
 <template>
   <div :class="b()">
     <slot />
-    <div v-show="loading" :class="b('loading')">
+    <div
+      v-if="loading"
+      :class="b('loading')"
+    >
       <slot name="loading">
-        <loading />
+        <loading :class="b('loading-icon')" />
         <span :class="b('loading-text')">{{ loadingText || $t('loadingTip') }}</span>
       </slot>
+    </div>
+    <div
+      v-if="finished && finishedText"
+      :class="b('finished-text')"
+    >
+      {{ finishedText }}
     </div>
   </div>
 </template>
@@ -25,6 +34,8 @@ export default create({
   props: {
     loading: Boolean,
     finished: Boolean,
+    loadingText: String,
+    finishedText: String,
     immediateCheck: {
       type: Boolean,
       default: true
@@ -32,8 +43,7 @@ export default create({
     offset: {
       type: Number,
       default: 300
-    },
-    loadingText: String
+    }
   },
 
   mounted() {
@@ -78,7 +88,11 @@ export default create({
       const scrollerHeight = utils.getVisibleHeight(scroller);
 
       /* istanbul ignore next */
-      if (!scrollerHeight || utils.getComputedStyle(el).display === 'none' || el.offsetParent === null) {
+      if (
+        !scrollerHeight ||
+        utils.getComputedStyle(el).display === 'none' ||
+        el.offsetParent === null
+      ) {
         return;
       }
 

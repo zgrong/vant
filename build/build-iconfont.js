@@ -13,10 +13,9 @@ const config = require('../packages/icon/config');
 const local = require('../packages/icon/config/template-local');
 
 const iconDir = path.join(__dirname, '../packages/icon');
-const cssDir = path.join(__dirname, '../packages/vant-css/src');
 const svgDir = path.join(iconDir, 'svg');
 const sketch = path.join(iconDir, 'assets/icons.sketch');
-const template = path.join(iconDir, 'config/template.css');
+const template = path.join(iconDir, 'config/template.tpl');
 
 // get md5 from sketch
 const md5 = md5File.sync(sketch).slice(0, 6);
@@ -34,7 +33,8 @@ const prevTTFs = glob.sync(path.join(iconDir, '*.ttf'));
 prevTTFs.forEach(ttf => fs.removeSync(ttf));
 
 // rename svg
-config.glyphs.forEach((icon, index) => {
+const icons = [...config.basic, ...config.outline, ...config.filled];
+icons.forEach((icon, index) => {
   const src = path.join(svgDir, icon.src);
   if (fs.existsSync(src)) {
     fs.renameSync(src, path.join(svgDir, icon.css + '.svg'));
@@ -49,7 +49,7 @@ gulp.task('ttf', () => {
       iconfontCss({
         fontName: config.name,
         path: template,
-        targetPath: '../vant-css/src/icon.css',
+        targetPath: '../icon/index.less',
         normalize: true,
         firstGlyph: 0xf000,
         cssClass: ttf // this is a trick to pass ttf to template
@@ -66,10 +66,7 @@ gulp.task('ttf', () => {
 
 gulp.task('default', ['ttf'], () => {
   // generate icon-local.css
-  fs.writeFileSync(
-    path.join(cssDir, 'icon-local.css'),
-    local(config.name, ttf)
-  );
+  fs.writeFileSync(path.join(iconDir, 'local.less'), local(config.name, ttf));
 
   // remove svg
   fs.removeSync(svgDir);

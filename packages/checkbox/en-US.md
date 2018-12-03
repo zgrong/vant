@@ -31,7 +31,14 @@ export default {
 <van-checkbox v-model="checked" disabled>Checkbox</van-checkbox>
 ```
 
+#### Custom Color
+
+```html
+<van-checkbox v-model="checked" checked-color="#4b0">Checkbox</van-checkbox>
+```
+
 #### Custom Icon
+
 Use icon slot to custom icon
 
 ```html
@@ -58,6 +65,7 @@ export default {
 ```
 
 #### Checkbox Group
+
 When Checkboxes are inside a CheckboxGroup, the checked checkboxes's name is an array and bound with CheckboxGroup by v-model.
 
 ```html
@@ -129,18 +137,19 @@ export default {
 ### Checkbox API
 
 | Attribute | Description | Type | Default |
-|-----------|-----------|-----------|-------------|
+|------|------|------|------|
 | name | Checkbox name | `any` | - |
+| shape | Can be set to `round` `square` | `String` | `round` |
 | v-model | Check status | `Boolean` | `false` |
 | disabled | Diable checkbox | `Boolean` | `false` |
 | label-disabled | Whether to disable label click | `Boolean` | `false` |
 | label-position | Can be set to `left` | `String` | `right` |
-| shape | Can be set to `round` `square` | `String` | `round` |
+| checked-color | Checked color | `String` | `#1989fa` | - |
 
 ### CheckboxGroup API
 
 | Attribute | Description | Type | Default |
-|-----------|-----------|-----------|-------------|
+|------|------|------|------|
 | v-model | Names of all checked checkboxes | `Array` | - |
 | disabled | Disable all checkboxes | `Boolean` | `false` |
 | max | Maximum amount of checked options | `Number` | `0`(Unlimited) |
@@ -148,19 +157,19 @@ export default {
 ### Checkbox Event
 
 | Event | Description | Parameters |
-|-----------|-----------|-----------|
+|------|------|------|
 | change | Triggered when value changed | current value |
 
 ### CheckboxGroup Event
 
 | Event | Description | Parameters |
-|-----------|-----------|-----------|
+|------|------|------|
 | change | Triggered when value changed | current value |
 
 ### Checkbox Slot
 
 | Name | Description | slot-scope |
-|-----------|-----------|-----------|
+|------|------|------|
 | - | Custom label | - |
 | icon | Custom icon | checked: whether to be checked |
 
@@ -169,5 +178,5 @@ export default {
 Use ref to get checkbox instance and call instance methods
 
 | Name | Attribute | Return value | Description |
-|-----------|-----------|-----------|-------------|
+|------|------|------|------|
 | toggle | - | - | Toggle check status |

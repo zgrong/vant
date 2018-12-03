@@ -62,6 +62,8 @@ export default {
   'nav-bar.zh-CN': () => import('../../packages/nav-bar/zh-CN.md'),
   'notice-bar.en-US': () => import('../../packages/notice-bar/en-US.md'),
   'notice-bar.zh-CN': () => import('../../packages/notice-bar/zh-CN.md'),
+  'notify.en-US': () => import('../../packages/notify/en-US.md'),
+  'notify.zh-CN': () => import('../../packages/notify/zh-CN.md'),
   'number-keyboard.en-US': () => import('../../packages/number-keyboard/en-US.md'),
   'number-keyboard.zh-CN': () => import('../../packages/number-keyboard/zh-CN.md'),
   'pagination.en-US': () => import('../../packages/pagination/en-US.md'),
@@ -92,6 +94,8 @@ export default {
   'stepper.zh-CN': () => import('../../packages/stepper/zh-CN.md'),
   'steps.en-US': () => import('../../packages/steps/en-US.md'),
   'steps.zh-CN': () => import('../../packages/steps/zh-CN.md'),
+  'style.en-US': () => import('../../packages/style/en-US.md'),
+  'style.zh-CN': () => import('../../packages/style/zh-CN.md'),
   'submit-bar.en-US': () => import('../../packages/submit-bar/en-US.md'),
   'submit-bar.zh-CN': () => import('../../packages/submit-bar/zh-CN.md'),
   'swipe.en-US': () => import('../../packages/swipe/en-US.md'),
@@ -114,8 +118,6 @@ export default {
   'tree-select.zh-CN': () => import('../../packages/tree-select/zh-CN.md'),
   'uploader.en-US': () => import('../../packages/uploader/en-US.md'),
   'uploader.zh-CN': () => import('../../packages/uploader/zh-CN.md'),
-  'vant-css.en-US': () => import('../../packages/vant-css/en-US.md'),
-  'vant-css.zh-CN': () => import('../../packages/vant-css/zh-CN.md'),
   'waterfall.en-US': () => import('../../packages/waterfall/en-US.md'),
   'waterfall.zh-CN': () => import('../../packages/waterfall/zh-CN.md')
 };

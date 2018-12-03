@@ -1,5 +1,8 @@
 <template>
-  <div :class="b({ 'show-action': showAction })" :style="{ background }">
+  <div
+    :class="b({ 'show-action': showAction })"
+    :style="{ background }"
+  >
     <field
       v-bind="$attrs"
       v-on="listeners"
@@ -8,8 +11,16 @@
       :value="value"
       :border="false"
       left-icon="search"
-    />
-    <div v-if="showAction" :class="b('action')">
+    >
+      <slot
+        name="left-icon"
+        slot="left-icon"
+      />
+    </field>
+    <div
+      v-if="showAction"
+      :class="b('action')"
+    >
       <slot name="action">
         <div @click="onBack">{{ $t('cancel') }}</div>
       </slot>

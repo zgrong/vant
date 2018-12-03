@@ -13,7 +13,14 @@
       'min-height': type === 'textarea' && !autosize
     })"
   >
-    <slot name="label" slot="title" />
+    <slot
+      name="left-icon"
+      slot="icon"
+    />
+    <slot
+      name="label"
+      slot="title"
+    />
     <div :class="b('body')">
       <textarea
         v-if="type === 'textarea'"
@@ -38,14 +45,21 @@
         v-if="showClear"
         name="clear"
         :class="b('clear')"
-        @touchstart.prevent="$emit('input', '')"
+        @touchstart.prevent="onClear"
       />
-      <div v-if="$slots.icon || icon" :class="b('icon')" @click="onClickIcon">
+      <div
+        v-if="$slots.icon || icon"
+        :class="b('icon')"
+        @click="onClickIcon"
+      >
         <slot name="icon">
           <icon :name="icon" />
         </slot>
       </div>
-      <div v-if="$slots.button" :class="b('button')">
+      <div
+        v-if="$slots.button"
+        :class="b('button')"
+      >
         <slot name="button" />
       </div>
     </div>
@@ -126,6 +140,10 @@ export default create({
   },
 
   methods: {
+    focus() {
+      this.$refs.input && this.$refs.input.focus();
+    },
+
     blur() {
       this.$refs.input && this.$refs.input.blur();
     },
@@ -152,6 +170,7 @@ export default create({
       this.$emit('focus', event);
 
       // hack for safari
+      /* istanbul ignore if */
       if (this.readonly) {
         this.blur();
       }
@@ -167,6 +186,11 @@ export default create({
       this.onIconClick && this.onIconClick();
     },
 
+    onClear() {
+      this.$emit('input', '');
+      this.$emit('clear');
+    },
+
     onKeypress(event) {
       if (this.type === 'number') {
         const { keyCode } = event;
@@ -177,6 +201,8 @@ export default create({
         }
       }
 
+      // trigger blur after click keyboard search button
+      /* istanbul ignore next */
       if (this.type === 'search' && event.keyCode === 13) {
         this.blur();
       }

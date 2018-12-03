@@ -1,7 +1,14 @@
 <template>
-  <div :class="b('pane')" v-show="isSelected">
+  <div
+    v-show="parent.animated || isSelected"
+    :class="b('pane', { float: parent.animated })"
+    :style="paneStyle"
+  >
     <slot v-if="inited" />
-    <div v-if="$slots.title" ref="title">
+    <div
+      v-if="$slots.title"
+      ref="title"
+    >
       <slot name="title" />
     </div>
   </div>
@@ -23,7 +30,8 @@ export default create({
 
   data() {
     return {
-      inited: false
+      inited: false,
+      paneStyle: {}
     };
   },
 
@@ -40,6 +48,12 @@ export default create({
   watch: {
     'parent.curActive'() {
       this.inited = this.inited || this.isSelected;
+    },
+
+    'parent.computedWidth'(width) {
+      this.paneStyle = {
+        width: `${width}px`
+      };
     },
 
     title() {

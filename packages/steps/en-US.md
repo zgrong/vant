@@ -68,18 +68,18 @@ export default {
 ### Steps API
 
 | Attribute | Description | Type | Default |
-|-----------|-----------|-----------|-------------|
+|------|------|------|------|
 | active | Active step | `Number` | 0 |
 | icon | Action step icon | `String` | - |
 | icon-class | Icon class | `String` | - |
 | title | Title | `String` | - |
 | description | Description | `String` | - |
 | direction | Can be set to `horizontal` `vertical` | `String` | `horizontal` |
-| active-color | Active step color | `String` | `#06bf04` |
+| active-color | Active step color | `String` | `#4b0` |
 
 ### Steps Slot
 
 | Name | Description |
-|-----------|-----------|
+|------|------|
 | icon | Custom icon |
 | message-extra | Extra content |

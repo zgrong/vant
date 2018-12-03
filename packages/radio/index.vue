@@ -1,16 +1,26 @@
 <template>
-  <div :class="b({ disabled: isDisabled })" @click="$emit('click')">
+  <div
+    :class="b({ disabled: isDisabled })"
+    @click="$emit('click')"
+  >
     <span :class="b('input')">
       <input
-        :value="name"
         v-model="currentValue"
         type="radio"
+        :value="name"
         :class="b('control')"
         :disabled="isDisabled"
       >
-      <icon :name="currentValue === name ? 'checked' : 'check'" />
+      <icon
+        :style="iconStyle"
+        :name="checked ? 'checked' : 'check'"
+      />
     </span>
-    <span v-if="$slots.default" :class="b('label', labelPosition)" @click="onClickLabel">
+    <span
+      v-if="$slots.default"
+      :class="b('label', labelPosition)"
+      @click="onClickLabel"
+    >
       <slot />
     </span>
   </div>
@@ -29,6 +39,7 @@ export default create({
     name: null,
     value: null,
     disabled: Boolean,
+    checkedColor: String,
     labelDisabled: Boolean,
     labelPosition: Boolean
   },
@@ -44,10 +55,23 @@ export default create({
       }
     },
 
+    checked() {
+      return this.currentValue === this.name;
+    },
+
     isDisabled() {
       return this.parent
         ? this.parent.disabled || this.disabled
         : this.disabled;
+    },
+
+    iconStyle() {
+      const { checkedColor } = this;
+      if (checkedColor && this.checked && !this.isDisabled) {
+        return {
+          color: checkedColor
+        };
+      }
     }
   },
 

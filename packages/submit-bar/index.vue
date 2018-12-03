@@ -1,7 +1,10 @@
 <template>
   <div :class="b()">
     <slot name="top" />
-    <div :class="b('tip')" v-if="tip || $slots.tip">
+    <div
+      v-if="tip || $slots.tip"
+      :class="b('tip')"
+    >
       {{ tip }}<slot name="tip" />
     </div>
     <div :class="b('bar')">
@@ -12,7 +15,14 @@
           <span :class="b('price')">{{ currency }} {{ price | format }}</span>
         </template>
       </div>
-      <van-button :type="buttonType" :disabled="disabled" :loading="loading" @click="$emit('submit')">
+      <van-button
+        square
+        size="large"
+        :type="buttonType"
+        :disabled="disabled"
+        :loading="loading"
+        @click="$emit('submit')"
+      >
         {{ loading ? '' : buttonText }}
       </van-button>
     </div>

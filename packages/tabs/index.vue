@@ -8,8 +8,16 @@
         { 'van-hairline--top-bottom': type === 'line' }
       ]"
     >
-      <div :class="b('nav', [type])" ref="nav" :style="navStyle">
-        <div v-if="type === 'line'" :class="b('line')" :style="lineStyle" />
+      <div
+        ref="nav"
+        :class="b('nav', [type])"
+        :style="navStyle"
+      >
+        <div
+          v-if="type === 'line'"
+          :class="b('line')"
+          :style="lineStyle"
+        />
         <div
           v-for="(tab, index) in tabs"
           ref="tabs"
@@ -21,12 +29,26 @@
           :style="getTabStyle(tab, index)"
           @click="onClick(index)"
         >
-          <span class="van-ellipsis" ref="title">{{ tab.title }}</span>
+          <span
+            ref="title"
+            class="van-ellipsis"
+          >
+            {{ tab.title }}
+          </span>
         </div>
       </div>
     </div>
-    <div :class="b('content')" ref="content">
-      <slot />
+    <div
+      ref="content"
+      :class="b('content')"
+    >
+      <div
+        v-show="computedWidth !== 0"
+        :class="b('track')"
+        :style="trackStyle"
+      >
+        <slot />
+      </div>
     </div>
   </div>
 </template>
@@ -50,6 +72,7 @@ export default create({
   props: {
     color: String,
     sticky: Boolean,
+    animated: Boolean,
     lineWidth: Number,
     swipeable: Boolean,
     active: {
@@ -62,7 +85,7 @@ export default create({
     },
     duration: {
       type: Number,
-      default: 0.2
+      default: 0.3
     },
     swipeThreshold: {
       type: Number,
@@ -84,7 +107,8 @@ export default create({
         resize: false,
         sticky: false,
         swipeable: false
-      }
+      },
+      computedWidth: 0
     };
   },
 
@@ -115,6 +139,23 @@ export default create({
       return {
         borderColor: this.color
       };
+    },
+
+    trackStyle() {
+      const {
+        curActive,
+        computedWidth = 0,
+        tabs,
+        animated
+      } = this;
+      if (!animated) return {};
+
+      const offset = -1 * computedWidth * curActive;
+      return {
+        width: `${computedWidth * tabs.length}px`,
+        transitionDuration: `${this.duration}s`,
+        transform: `translateX(${offset}px)`
+      };
     }
   },
 
@@ -140,7 +181,7 @@ export default create({
       this.setLine();
 
       // scroll to correct position
-      if (this.position === 'page-top' || this.position === 'content-bottom') {
+      if (this.position === 'top' || this.position === 'bottom') {
         scrollUtils.setScrollTop(window, scrollUtils.getElementTop(this.$el));
       }
     },
@@ -157,6 +198,7 @@ export default create({
   mounted() {
     this.correctActive(this.active);
     this.setLine();
+    this.setWidth();
 
     this.$nextTick(() => {
       this.handlers(true);
@@ -180,6 +222,13 @@ export default create({
   },
 
   methods: {
+    setWidth() {
+      if (this.$el) {
+        const rect = this.$el.getBoundingClientRect() || {};
+        this.computedWidth = rect.width;
+      }
+    },
+
     // whether to bind sticky listener
     handlers(bind) {
       const { events } = this;
@@ -251,12 +300,14 @@ export default create({
     // update nav bar style
     setLine() {
       this.$nextTick(() => {
-        if (!this.$refs.tabs || this.type !== 'line') {
+        const { tabs } = this.$refs;
+
+        if (!tabs || this.type !== 'line') {
           return;
         }
 
-        const tab = this.$refs.tabs[this.curActive];
-        const width = this.lineWidth || (tab.offsetWidth / 2);
+        const tab = tabs[this.curActive];
+        const width = this.isDef(this.lineWidth) ? this.lineWidth : (tab.offsetWidth / 2);
         const left = tab.offsetLeft + (tab.offsetWidth - width) / 2;
 
         this.lineStyle = {
@@ -298,8 +349,6 @@ export default create({
         }
         index += diff;
       }
-
-      return active;
     },
 
     // emit event when clicked
@@ -315,11 +364,13 @@ export default create({
 
     // scroll active tab into view
     scrollIntoView(immediate) {
-      if (!this.scrollable || !this.$refs.tabs) {
+      const { tabs } = this.$refs;
+
+      if (!this.scrollable || !tabs) {
         return;
       }
 
-      const tab = this.$refs.tabs[this.curActive];
+      const tab = tabs[this.curActive];
       const { nav } = this.$refs;
       const { scrollLeft, offsetWidth: navWidth } = nav;
       const { offsetLeft, offsetWidth: tabWidth } = tab;
@@ -361,7 +412,7 @@ export default create({
       const isCard = this.type === 'card';
 
       if (color) {
-        if (!item.disabled && isCard !== active) {
+        if (!item.disabled && isCard && !active) {
           style.color = color;
         }
         if (!item.disabled && isCard && active) {
@@ -370,6 +421,10 @@ export default create({
         if (isCard) {
           style.borderColor = color;
         }
+      }
+
+      if (this.scrollable) {
+        style.flexBasis = 88 / (this.swipeThreshold) + '%';
       }
 
       return style;

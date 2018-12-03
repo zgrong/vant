@@ -32,9 +32,10 @@ Locale.add(messages);
 Current supported languages:
 
 | Language | Filename |
-|-----------|-----------|
+|------|------|
 | Chinese | zh-CN |
 | English | en-US |
 | Traditional Chinese | zh-HK |
+| Turkish | tr-TR |
 
 View all language configs [Here](https://github.com/youzan/vant/tree/dev/packages/locale/lang).

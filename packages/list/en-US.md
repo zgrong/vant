@@ -16,6 +16,7 @@ Vue.use(List);
 <van-list
   v-model="loading"
   :finished="finished"
+  :finished-text="Finished"
   @load="onLoad"
 >
   <van-cell
@@ -56,17 +57,18 @@ export default {
 ### API
 
 | Attribute | Description | Type | Default |
-|-----------|-----------|-----------|-------------|
+|------|------|------|------|
 | loading | Whether to show loading info，the `load` event will not be triggered when loading | `Boolean` | `false` |
 | finished | Whether loading is finished，the `load` event will not be triggered when finished | `Boolean` | `false` |
 | offset | The load event will be triggered when the distance between the scrollbar and the bottom is less than offset | `Number` | `300` |
 | loading-text | Loading text | `String` | `Loading...` |
+| finished-text | Finished text | `String` | - |
 | immediate-check | Whether to check loading position immediately after mounted | `Boolean` | `true` |
 
 ### Event
 
 | Event | Description | Arguments |
-|-----------|-----------|-----------|
+|------|------|------|
 | load | Triggered when the distance between the scrollbar and the bottom is less than offset | - |
 
 ### Methods
@@ -74,12 +76,12 @@ export default {
 Use ref to get list instance and call instance methods
 
 | Name | Attribute | Return value | Description |
-|-----------|-----------|-----------|-------------|
+|------|------|------|------|
 | check | - | - | Check scroll position |
 
 ### Slot
 
 | Name | Description |
-|-----------|-----------|
+|------|------|
 | - | List content |
 | loading | Custom loading tips |

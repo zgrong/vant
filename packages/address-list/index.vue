@@ -1,18 +1,27 @@
 <template>
   <div :class="b()">
     <slot name="top" />
-    <radio-group :value="value" @input="$emit('input', $event)">
+    <radio-group
+      :value="value"
+      @input="$emit('input', $event)"
+    >
       <cell-group>
         <address-item
           v-for="(item, index) in list"
           :data="item"
           :key="item.id"
+          :switchable="switchable"
           @select="$emit('select', item, index)"
           @edit="$emit('edit', item, index)"
         />
       </cell-group>
     </radio-group>
-    <div v-if="disabledText" :class="b('disabled-text')">{{ disabledText }}</div>
+    <div
+      v-if="disabledText"
+      :class="b('disabled-text')"
+    >
+      {{ disabledText }}
+    </div>
     <cell-group v-if="disabledList.length">
       <address-item
         v-for="(item, index) in disabledList"
@@ -54,6 +63,10 @@ export default create({
     disabledText: String,
     addButtonText: String,
     value: [String, Number],
+    switchable: {
+      type: Boolean,
+      default: true
+    },
     list: {
       type: Array,
       default: () => []

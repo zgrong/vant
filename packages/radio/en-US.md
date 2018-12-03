@@ -11,6 +11,7 @@ Vue.use(Radio);
 ### Usage
 
 #### Basic Usage
+
 Use `v-model` to bind the name of checked radio
 
 ```html
@@ -39,6 +40,12 @@ export default {
 </van-radio-group>
 ```
 
+#### Custom Color
+
+```html
+<van-radio checked-color="#4b0">Radio</van-radio>
+```
+
 #### Inside a Cell
 
 ```html
@@ -57,21 +64,22 @@ export default {
 ### Radio API
 
 | Attribute | Description | Type | Default |
-|-----------|-----------|-----------|-------------|
+|------|------|------|------|
 | name | Radio name | `any` | - |
 | disabled | Whether to disable radio | `Boolean` | `false` |
 | label-disabled | Whether to disable label click | `Boolean` | `false` |
 | label-position | Can be set to `left` | `String` | `right` |
+| checked-color | Checked color | `String` | `#1989fa` | - |
 
 ### RadioGroup API
 
 | Attribute | Description | Type | Default |
-|-----------|-----------|-----------|-------------|
+|------|------|------|------|
 | v-model | Name of checked radio | `any` | - |
 | disabled | Diable all radios | `Boolean` | `false` |
 
 ### RadioGroup Event
 
 | Event | Description | Parameters |
-|-----------|-----------|-----------|
+|------|------|------|
 | change | Triggered when value changed | current value |

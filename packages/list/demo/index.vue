@@ -2,13 +2,21 @@
   <demo-section>
     <demo-block :title="$t('basicUsage')">
       <p class="page-desc">{{ $t('text') }}</p>
-      <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+      <van-pull-refresh
+        v-model="refreshing"
+        @refresh="onRefresh"
+      >
         <van-list
           v-model="loading"
           :finished="finished"
+          :finished-text="$t('finishedText')"
           @load="onLoad"
         >
-          <van-cell v-for="item in list" :key="item" :title="item + ''" />
+          <van-cell
+            v-for="item in list"
+            :key="item"
+            :title="item + ''"
+          />
         </van-list>
       </van-pull-refresh>
     </demo-block>
@@ -19,10 +27,12 @@
 export default {
   i18n: {
     'zh-CN': {
-      text: '当即将滚动到元素底部时，会自动加载更多'
+      text: '当即将滚动到元素底部时，会自动加载更多',
+      finishedText: '没有更多了'
     },
     'en-US': {
-      text: 'This list will load items will scroll to bottom.'
+      text: 'This list will load items will scroll to bottom.',
+      finishedText: 'Finished'
     }
   },
 
@@ -62,7 +72,9 @@ export default {
 };
 </script>
 
-<style lang="postcss">
+<style lang="less">
+@import '../../style/var';
+
 .demo-list {
   .van-cell {
     text-align: center;
@@ -73,7 +85,7 @@ export default {
     line-height: 1.4;
     font-size: 14px;
     text-align: center;
-    color: #666;
+    color: @gray-darker;
   }
 }
 </style>
