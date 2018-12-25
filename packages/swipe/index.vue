@@ -7,7 +7,7 @@
       @touchmove="onTouchMove"
       @touchend="onTouchEnd"
       @touchcancel="onTouchEnd"
-      @transitionend="$emit('change', activeIndicator)"
+      @transitionend.stop="$emit('change', activeIndicator)"
     >
       <slot />
     </div>
@@ -15,11 +15,12 @@
       <div
         v-if="showIndicators && count > 1"
         :class="b('indicators', { vertical })"
+        @transitionend.stop
       >
         <i
           v-for="index in count"
           :class="b('indicator', { active: index - 1 === activeIndicator })"
-          :style="indicatorStyle"
+          :style="index - 1 === activeIndicator ? indicatorStyle : null"
         />
       </div>
     </slot>
@@ -80,6 +81,14 @@ export default create({
     if (!this.$isServer) {
       on(window, 'resize', this.onResize, true);
     }
+  },
+
+  activated() {
+    if (this.rendered) {
+      this.initialize();
+    }
+
+    this.rendered = true;
   },
 
   destroyed() {
@@ -220,9 +229,13 @@ export default create({
         return;
       }
 
-      swipes[0].offset = atLast && (delta < 0 || move > 0) ? trackSize : 0;
-      swipes[count - 1].offset =
-        atFirst && (delta > 0 || move < 0) ? -trackSize : 0;
+      if (swipes[0]) {
+        swipes[0].offset = atLast && (delta < 0 || move > 0) ? trackSize : 0;
+      }
+
+      if (swipes[count - 1]) {
+        swipes[count - 1].offset = atFirst && (delta > 0 || move < 0) ? -trackSize : 0;
+      }
 
       if (move && active + move >= -1 && active + move <= count) {
         this.active += move;

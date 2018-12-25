@@ -1,8 +1,7 @@
 <template>
   <div
-    v-show="parent.animated || isSelected"
-    :class="b('pane', { float: parent.animated })"
-    :style="paneStyle"
+    v-show="isSelected || parent.animated"
+    :class="b('pane')"
   >
     <slot v-if="inited" />
     <div
@@ -15,6 +14,7 @@
 </template>
 
 <script>
+/* eslint-disable object-shorthand */
 import create from '../utils/create';
 import findParent from '../mixins/find-parent';
 
@@ -30,8 +30,7 @@ export default create({
 
   data() {
     return {
-      inited: false,
-      paneStyle: {}
+      inited: false
     };
   },
 
@@ -48,12 +47,6 @@ export default create({
   watch: {
     'parent.curActive'() {
       this.inited = this.inited || this.isSelected;
-    },
-
-    'parent.computedWidth'(width) {
-      this.paneStyle = {
-        width: `${width}px`
-      };
     },
 
     title() {

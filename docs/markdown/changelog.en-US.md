@@ -1,5 +1,90 @@
 ## Changelog
 
+## [v1.5.0-beta2](https://github.com/youzan/vant/tree/v1.5.0-beta2)
+`2018-12-18`
+
+**Bug Fixes**
+
+- fix icon.less compile error when custom style [\#2325](https://github.com/youzan/vant/pull/2325)为
+- fix Tab should only set overflow when use animated prop [\#2322](https://github.com/youzan/vant/pull/2322)
+- fix Field text color [\#2323](https://github.com/youzan/vant/pull/2323)
+- fix Swipe indicator color [\#2324](https://github.com/youzan/vant/pull/2324)
+- fix Radio unchecked icon name [\#2321](https://github.com/youzan/vant/pull/2321)
+
+
+## [v1.5.0-beta](https://github.com/youzan/vant/tree/v1.5.0-beta)
+`2018-12-17`
+
+**Icon Breaking changes**
+
+- repaint all icons, add 100 new icons
+- remove edit-data
+- remove pending-deliver
+- remove pending-evaluate
+- remove points-mall
+- remove exchange-record
+- rename warn to info
+- rename check to circle
+- rename add2 to add-square
+- rename question2 to question
+- rename password-view to eye
+- rename password-not-view to closed-eye
+- rename value-card to balance-o
+- rename receive-gift to gift
+- rename pending-orders to orders-o
+- rename gift-card-pay to gift-card
+
+**Improvements**
+
+- support tag/attribute auto-completion via the vetur plugin [\#2261](https://github.com/youzan/vant/pull/2261)
+- support use component by PascalCase tag name [\#2296](https://github.com/youzan/vant/pull/2296)
+- Card: add lazy-load prop [\#2301](https://github.com/youzan/vant/pull/2301)
+- Card: update style [\#2307](https://github.com/youzan/vant/pull/2307) [\#2313](https://github.com/youzan/vant/pull/2313)
+- Cell: update style [\#2311](https://github.com/youzan/vant/pull/2311) [\#2312](https://github.com/youzan/vant/pull/2312)
+- Coupon: add currency prop [\#2274](https://github.com/youzan/vant/pull/2274) [\#2256](https://github.com/youzan/vant/pull/2256)
+- Collapse: update style [\#2275](https://github.com/youzan/vant/pull/2275)
+- Checkbox: update style [\#2260](https://github.com/youzan/vant/pull/2260)
+- Dialog: add message-align prop [\#2259](https://github.com/youzan/vant/pull/2259)
+- Stepper: add async-change prop [\#2318](https://github.com/youzan/vant/pull/2318)
+- Switch: update style [\#2242](https://github.com/youzan/vant/pull/2242)
+- SwitchCell: add active-color、inactive-color prop [\#2273](https://github.com/youzan/vant/pull/2273)
+- NoticeBar: support use built-in icon [\#2305](https://github.com/youzan/vant/pull/2305)
+- Tab: add ellipsis prop [\#2299](https://github.com/youzan/vant/pull/2299)
+- Tag: add text-color prop [\#2277](https://github.com/youzan/vant/pull/2277)
+- Toast: update icon size [\#2241](https://github.com/youzan/vant/pull/2241)
+- TreeSelect: update style [\#2308](https://github.com/youzan/vant/pull/2308)
+- TreeSelect: support disable nav item [\#2308](https://github.com/youzan/vant/pull/2308)
+
+**Bug Fixes**
+
+- fix Dialog blurry text after scale animation [\#2300](https://github.com/youzan/vant/pull/2300)
+- fix Checkbox default label height [\#2293](https://github.com/youzan/vant/pull/2293)
+- fix Field cut off charactor input when use maxlength [\#2295](https://github.com/youzan/vant/pull/2295)
+- fix Swipe not re-initialize when inside keep-alive component [\#2297](https://github.com/youzan/vant/pull/2297)
+- fix Swipe cause error in some cases [\#2253](https://github.com/youzan/vant/pull/2253)
+- fix Tab display error when use animated prop [\#2238](https://github.com/youzan/vant/pull/2238)
+- fix Tabbar update info position [\#2257](https://github.com/youzan/vant/pull/2257)
+- fix compile failure in node 10 [\#2251](https://github.com/youzan/vant/pull/2251)
+- fix compile failure in windows [\#2229](https://github.com/youzan/vant/pull/2229)
+
+
+## [v1.4.8](https://github.com/youzan/vant/tree/v1.4.8)
+`2018-12-05`
+
+**Improvements**
+
+- Sku: add hide-quota-text prop [\#2216](https://github.com/youzan/vant/pull/2216)
+- ImagePreview: add asyncClose prop [\#2198](https://github.com/youzan/vant/pull/2198)
+- ImagePreview: add onClose params [\#2197](https://github.com/youzan/vant/pull/2197)
+- ImagePreview: add fade transition [\#2196](https://github.com/youzan/vant/pull/2196)
+
+**Bug Fixes**
+
+- fix Notify type definition [\#2210](https://github.com/youzan/vant/pull/2210)
+- fix Dialog default options [\#2208](https://github.com/youzan/vant/pull/2208)
+- fix ImagePreview indicator color [\#2187](https://github.com/youzan/vant/pull/2187)
+
+
 ## [v1.4.7](https://github.com/youzan/vant/tree/v1.4.7)
 `2018-11-27`
 

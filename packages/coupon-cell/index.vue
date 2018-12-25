@@ -5,6 +5,7 @@
     :value="value"
     :border="border"
     :is-link="editable"
+    :value-class="valueClass"
     @click="$emit('click')"
   />
 </template>
@@ -22,6 +23,10 @@ export default create({
   props: {
     title: String,
     coupons: Array,
+    currency: {
+      type: String,
+      default: '¥'
+    },
     border: {
       type: Boolean,
       default: true
@@ -42,9 +47,13 @@ export default create({
       const coupon = coupons[this.chosenCoupon];
       if (coupon) {
         const value = coupon.denominations || coupon.value;
-        return `-￥${(value / 100).toFixed(2)}`;
+        return `-${this.currency}${(value / 100).toFixed(2)}`;
       }
       return coupons.length === 0 ? this.$t('tips') : this.$t('count', coupons.length);
+    },
+
+    valueClass() {
+      return this.coupons[this.chosenCoupon] ? 'van-coupon-cell--selected' : '';
     }
   }
 });

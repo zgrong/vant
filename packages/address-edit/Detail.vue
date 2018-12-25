@@ -27,7 +27,7 @@
       :key="express.name + express.address"
       :title="express.name"
       :label="express.address"
-      icon="location"
+      icon="location-o"
       clickable
       @click="onSelect(express)"
     />
@@ -63,7 +63,7 @@ export default create({
     searchList() {
       if (this.showSearchResult && this.focused) {
         return this.searchResult || [];
-      };
+      }
       return [];
     },
 
