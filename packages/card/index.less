@@ -2,23 +2,19 @@
 @import '../style/mixins/ellipsis';
 
 .van-card {
-  color: @text-color;
-  display: flex;
-  font-size: 12px;
   position: relative;
-  box-sizing: border-box;
+  color: @text-color;
+  font-size: 12px;
   padding: 5px 15px;
+  box-sizing: border-box;
   background-color: @background-color-light;
-  flex-wrap: wrap;
 
   &:not(:first-child) {
     margin-top: 10px;
   }
 
-  &--center,
-  &__thumb {
-    align-items: center;
-    justify-content: center;
+  &__header {
+    display: flex;
   }
 
   &__thumb {
@@ -27,6 +23,8 @@
     height: 90px;
     margin-right: 10px;
     flex: none;
+    align-items: center;
+    justify-content: center;
 
     img {
       border: none;
@@ -37,18 +35,25 @@
 
   &__content {
     position: relative;
-    height: 90px;
+    display: flex;
     flex: 1;
+    height: 90px;
+    flex-direction: column;
+    min-width: 0; /* hack for flex box ellipsis */
+
+    &--centered {
+      justify-content: center;
+    }
   }
 
   &__title,
   &__desc {
-    line-height: 17px;
     word-break: break-all;
   }
 
   &__title {
-    max-height: 34px;
+    line-height: 16px;
+    max-height: 32px;
     font-weight: bold;
 
     .multi-ellipsis(2);
@@ -56,15 +61,12 @@
 
   &__desc {
     color: @gray-darker;
-    max-height: 17px;
+    max-height: 20px;
+    line-height: 20px;
   }
 
   &__bottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    line-height: 17px;
+    line-height: 20px;
   }
 
   &__price {
@@ -92,7 +94,6 @@
   }
 
   &__footer {
-    width: 100%;
     text-align: right;
     flex: none;
 

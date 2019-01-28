@@ -22,7 +22,8 @@ Vue.use(Card);
 ```
 
 #### Advanced Usage
-Use `slot` to custom content.
+
+Use slot to custom content.
 
 ```html
 <van-card
@@ -63,6 +64,9 @@ Use `slot` to custom content.
 |------|------|
 | title | Custom title |
 | desc | Custom description |
-| tags | Custom tags |
+| num | Custom num |
+| price | Custom price |
+| origin-price | Custom origin price |
 | thumb | Custom thumb |
+| tags | Custom tags |
 | footer | Custom footer |
