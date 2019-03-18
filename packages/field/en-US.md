@@ -118,6 +118,7 @@ Field support all native properties of input tag，such as `maxlength`、`placeh
 | value | Field value | `String | Number` | - |
 | label | Field label | `String` | - |
 | type | Input type | `String` | `text` |
+| size | Size，can be set to `large` | `String` | - |
 | border | Whether to show inner border | `Boolean` | `true` |
 | disabled | Whether to disable field | `Boolean` | `false` |
 | readonly | Whether to be readonly | `Boolean` | `false` |
@@ -138,6 +139,7 @@ Field support all native events of input tag，such as `focus`、`blur`、`keypr
 
 | Event | Description | Parameters |
 |------|------|------|
+| input | Triggered when value changed | - |
 | clear | Triggered when click clear icon | - |
 | click-left-icon | Triggered when click the left icon of Field | - |
 | click-right-icon | Triggered when click the right icon of Field | - |

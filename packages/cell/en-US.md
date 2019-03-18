@@ -62,6 +62,17 @@ Vue.use(Cell).use(CellGroup);
 </van-cell-group>
 ```
 
+#### Group Title
+
+```html
+<van-cell-group title="Group 1">
+  <van-cell title="Cell title" value="Content" />
+</van-cell-group>
+<van-cell-group title="Group 2">
+  <van-cell title="Cell title" value="Content" />
+</van-cell-group>
+```
+
 #### Advanced Usage
 
 ```html
@@ -83,6 +94,7 @@ Vue.use(Cell).use(CellGroup);
 
 | Attribute | Description | Type | Default |
 |------|------|------|------|
+| title | Group title | `String` | - |
 | border | Whether to show outer border | `Boolean` | `true` |
 
 ### Cell API
@@ -103,9 +115,9 @@ Vue.use(Cell).use(CellGroup);
 | is-link | Whether to show link icon | `Boolean` | `false` |
 | required | Whether to show required mark | `Boolean` | `false` |
 | arrow-direction | Can be set to `left` `up` `down` | `String` | - |
-| title-class | Title className | `String` | - |
-| value-class | Value className | `String` | - |
-| label-class | Label className | `String` | - |
+| title-class | Title className | `any` | - |
+| value-class | Value className | `any` | - |
+| label-class | Label className | `any` | - |
 
 ### Cell Event
 
@@ -120,4 +132,5 @@ Vue.use(Cell).use(CellGroup);
 | - | Default slot |
 | icon | Custom icon |
 | title | Custom title |
+| label | Custom label |
 | right-icon | Custom right icon |

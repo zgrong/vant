@@ -105,3 +105,6 @@ toast2.clear();
 | forbidClick | Whether to forbid click background | `Boolean` | `false` |
 | loadingType | Loading icon type, can be set to `spinner` | `String` | `circular` |
 | duration | Toast duration(ms), won't disappear if value is 0 | `Number` | `3000` |
+| className | Custom className | `String | Array | Object` | - |
+| onClose | onClose callback function | `Function` | - |
+| getContainer | Return the mount node for Toast | `String | () => HTMLElement` | `body` |

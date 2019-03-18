@@ -5,13 +5,16 @@ import { isObj, isServer } from '../utils';
 const defaultOptions = {
   type: 'text',
   mask: false,
-  message: '',
   value: true,
+  message: '',
+  className: '',
+  onClose: null,
   duration: 3000,
   position: 'middle',
-  loadingType: 'circular',
   forbidClick: false,
-  overlayStyle: {}
+  loadingType: 'circular',
+  getContainer: 'body',
+  overlayStyle: null
 };
 const parseOptions = message => (isObj(message) ? message : { message });
 
@@ -50,7 +53,13 @@ function Toast(options = {}) {
     clear() {
       toast.value = false;
 
+      if (options.onClose) {
+        options.onClose();
+      }
+
       if (!singleton && !isServer) {
+        clearTimeout(toast.timer);
+        queue = queue.filter(item => item !== toast);
         document.body.removeChild(toast.$el);
         toast.$destroy();
       }
